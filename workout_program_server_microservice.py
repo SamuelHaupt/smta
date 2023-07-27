@@ -4,7 +4,7 @@ import zmq
 
 
 def calculate_one_rep_max(weight):
-    one_rep_max = weight * (1 + 0.0333 * 5)
+    one_rep_max = round(weight * (1 + 0.0333 * 5), 2)
     return one_rep_max
 
 
