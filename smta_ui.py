@@ -363,7 +363,6 @@ class SmtaUI():
     def __str__(self):
         menu = ''.join((self.get_menu_from_menu_tree(self.get_current_menu_name())).get_menu_display())
         os.system('clear')
-        print()
         return menu
 
             

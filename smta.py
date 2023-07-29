@@ -15,9 +15,23 @@ def main():
     run_program = True
     while run_program:
         next_menu, user_input = ui.print_menu_and_display_request_options_to_user()
-        if next_menu is False: return # Used for exiting the program
+        if next_menu is False: return
         
         if ui.get_previous_menu_name() == 'Search by Name' and next_menu == 'Search by Name Results':
+            search_by_name_results_menu = ui.get_menu_from_menu_tree(next_menu)
+            if not search_by_name_results_menu.get_menu_dynamic_input():
+                dynamic_input = c_search_by_name_controller.get_stock_name_match_from_user_input(user_input)
+                if dynamic_input is False:
+                    ui.backtrack_current_and_previous_menus()
+                    continue
+                search_by_name_results_menu.set_menu_dynamic_input(dynamic_input)
+            success = search_by_name_results_menu.generate_dynamic_menu()
+            if success is False and user_input == '#next':
+                search_by_name_results_menu.reset_dynamic_menu()
+                ui.backtrack_current_and_previous_menus()
+                continue
+
+        if ui.get_previous_menu_name() == 'Search by Name Results' and next_menu == 'Search by Name Results':
             search_by_name_results_menu = ui.get_menu_from_menu_tree(next_menu)
             if not search_by_name_results_menu.get_menu_dynamic_input():
                 dynamic_input = c_search_by_name_controller.get_stock_name_match_from_user_input(user_input)
