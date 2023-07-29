@@ -50,15 +50,8 @@ def main():
             company_name = user_input
             stock_symbol = c_search_by_name_controller.get_stock_symbol_from_stock_name(company_name)
             dynamic_input = c_stock_data_request_controller.get_stock_information_for_individual_stock_view(stock_symbol)
-            # if dynamic_input is False:
-            #     print('Error with stock symbol request.')
-            #     ui.backtrack_current_and_previous_menus()
             individual_stock_view.set_menu_dynamic_input(dynamic_input)
             success = individual_stock_view.generate_dynamic_menu()
-            # if success is False:
-            #     print('Error with displaying dynamic input')
-            #     individual_stock_view.reset_dynamic_menu()
-            #     ui.backtrack_current_and_previous_menus()
 
         if ui.get_previous_menu_name() == 'Search by Symbol' and next_menu == 'Stock Symbol Confirmation':
             individual_stock_view = ui.get_menu_from_menu_tree(next_menu)
@@ -81,17 +74,8 @@ def main():
             individual_stock_view = ui.get_menu_from_menu_tree(next_menu)
             stock_symbol = user_input
             dynamic_input = c_stock_data_request_controller.get_stock_information_for_individual_stock_view(stock_symbol)
-            # if dynamic_input is False:
-            #     print('Error with stock symbol request.')
-            #     ui.backtrack_current_and_previous_menus()
-            #     continue
             individual_stock_view.set_menu_dynamic_input(dynamic_input)
             success = individual_stock_view.generate_dynamic_menu()
-            # if success is False:
-            #     print('Error with displaying dynamic input')
-            #     individual_stock_view.reset_dynamic_menu()
-            #     ui.backtrack_current_and_previous_menus()
-            #     continue
 
         if next_menu == 'Major Stock Indices':
             major_stock_indices = ui.get_menu_from_menu_tree(next_menu)

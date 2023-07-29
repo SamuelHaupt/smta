@@ -328,7 +328,7 @@ class SmtaUI():
         valid_input = user_input in current_menu.get_menu_choices()
         while not valid_input:
             user_input = input('Input request: ')
-            if user_input == 'exit': return False, None ##### Temporary exit command
+            if user_input == 'exit': return False, None
             valid_input = user_input in current_menu.get_menu_choices()
             dynamic_screen = '@#$%^&*!dynamic screen@#$%^&*!' in current_menu.get_menu_choices()
             if valid_input:
@@ -355,7 +355,7 @@ class SmtaUI():
     def print_menu_and_display_request_options_to_user(self):
         print(self)
         next_menu, user_input = self.acquire_user_selected_menu()
-        if next_menu is False: return False, None ##### Temporary exit command
+        if next_menu is False: return False, None
         self.set_previous_menu_name(self.get_current_menu_name())
         self.set_current_menu_name(next_menu)
         return next_menu, user_input
